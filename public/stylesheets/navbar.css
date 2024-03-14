@@ -1,0 +1,11 @@
+.navbar .navbar-nav .nav-item {
+  margin-left: 4rem;
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+  color: var(--secondary-color-custom);
+}
+
+.navbar .navbar-nav .nav-item .nav-link:hover {
+  color: var(--tertiary-color-custom);
+}

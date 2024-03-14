@@ -1,0 +1,74 @@
+<%- include('../partials/header.ejs') %>
+<body>
+<%- include('../partials/navbar.ejs') %>
+  <main>
+    <header class="header-title pt-5">
+      <div class="container-lg">
+        <div class="row d-flex justify-content-center">
+          <div class="col-sm-12 col-md-5 col-lg-6 col-xxl-4">
+            <div class="position-relative text-center">
+              <h1 class="lh-1">Hasil Ujian</h1>
+              <h5 class="position-relative z-1">SERTIFIKASI</h5>
+              <!-- <div class="accent z-0"></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-lg">
+      <div class="row d-flex justify-content-center p-1 pt-md-3 mb-3">
+        <form action="/sertifikasi/search" method="get" class="d-flex justify-content-center mt-lg-4 mb-3">
+          <div class="row g-3">
+            <div class="col-sm-8">
+              <input type="text" name="nim" class="form-control" placeholder="Masukkan nim..." aria-label="nim" required>
+            </div>
+            <div class="col-sm">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <% if (data) { %>
+        <div class="row d-flex justify-content-center p-1 py-4 pt-md-5 ps-lg-5 bg-body-tertiary rounded-4 shadow">
+          <div class="col-6">
+            <div class="row d-flex mb-3">
+              <div class="col">No. Daftar</div>
+              <div class="col fw-bold regisNum"><%= data.regisNum ?? 0 %></div>
+            </div>
+            <div class="row d-flex mb-3">
+              <div class="col">No. Induk Mahasiswa</div>
+              <div class="col nim"><%= data.nim ?? 0 %></div>
+            </div>
+            <div class="row d-flex mb-3">
+              <div class="col">Nama Lengkap</div>
+              <div class="col name"><%=  data.name.toUpperCase()?? "" %></div>
+            </div>
+            <div class="row d-flex mb-3">
+              <div class="col">Tanggal Ujian Sertifikasi</div>
+              <div class="col date-of-assesment"><%= data.date_of_assesment ?? 'Belum Dikonfirmasi' %></div>
+            </div>
+            <div class="row d-flex mb-3">
+              <div class="col">Hasil Ujian Sertifikasi</div>
+              <div class="col">
+                <% if (data.result_of_assesment === 'K') { %>
+                  <span class="badge text-bg-success px-4 py-2">Kompeten</span>
+                <% } else if (data.result_of_assesment === 'BK') { %>
+                  <span class="badge text-bg-danger px-4 py-2">Belum Kompeten</span>
+                <% } else { %>
+                  <span class="badge text-bg-light px-4 py-2">Belum Dikonfirmasi</span>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% } %>
+
+      
+    </div>
+  </main>
+
+<%- include('../partials/js.ejs') %>
+</body>
+</html>

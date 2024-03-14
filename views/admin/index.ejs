@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+<%- include('./partials/navbar.ejs') %>
+<%- include('./partials/sidebar.ejs') %>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Dashboard</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+              <div class="inner">
+                <h3>44</h3>
+                <p>User Registrations</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          
+          
+          <!-- <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                <p>Bounce Rate</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div> -->
+          <!-- ./col -->
+        </div>
+
+        
+        <!-- Main row -->
+        <div class="row">
+          <!-- Left col -->
+          <section class="col-12 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie mr-1"></i>
+                  Data Pendaftaran Sertifikasi
+                </h3>
+              </div>
+              <!-- /.card-header -->
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+  
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                  <table class="table table-hover text-nowrap">
+                    <thead>
+                      <tr>
+                        <th>No. Daftar</th>
+                        <th>Nama Lengkap</th>
+                        <th>NIM</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% data.forEach(e => { %>
+                        <tr>
+                          <td><%= e.regisNum %></td>
+                          <td><%= e.applicant.name.toUpperCase() %></td>
+                          <td><%= e.applicant.nim %></td>
+                          <td>
+                            <% if (e.assesment.result === "TBC") { %>
+                              <span class="badge badge-info">Belum Ujian</span>
+                            <% } else if (e.assesment.result === "BK") { %>
+                              <span class="badge badge-warning">Belum Kompeten</span>
+                            <% } else { %>
+                              <span class="badge badge-success">Kompeten</span>
+                            <% } %>
+                          </td>
+                        </tr>
+                        
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+            </div>
+            <!-- /.card -->
+          </section>
+          <!-- /.Left col -->
+        </div>
+        <!-- /.row (main row) -->
+        
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  
+<%- include('./partials/footer.ejs') %>
+</div>
+<!-- ./wrapper -->
+<%- include('./partials/js.ejs') %>
+</body>
+</html>

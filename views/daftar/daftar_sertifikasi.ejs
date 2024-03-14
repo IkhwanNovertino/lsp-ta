@@ -1,0 +1,411 @@
+<%- include('../partials/header.ejs') %>
+<body>
+<%- include('../partials/navbar.ejs') %>
+  <main>
+    <header class="header-title pt-5">
+      <div class="container-lg">
+        <div class="row d-flex justify-content-center">
+          <div class="col-sm-12 col-md-5 col-lg-6 col-xxl-4">
+            <div class="position-relative text-center">
+              <!-- <h1 class="lh-1 position-relative z-1">Pendaftaran Sertifikasi</h1> -->
+              <h5 class="z-1">FORM PENDAFTARAN SERTIFIKASI</h5>
+              <!-- <span class="accent pendaftaran-accent position-absolute top-50 start-50 z-0"></span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="container-md">
+        <div class="row d-flex justify-content-center p-1 pt-md-3">
+          <div class="col-12 col-lg-8 mb-4 bg-body-tertiary rounded-5 shadow">
+            <form class="row g-3 p-2 p-lg-5" action="/daftar/create" method="post" autocomplete="off">
+              <div class="mb-3 m-0 pt-1 fw-medium text-primary" style="font-size: 14px;">DATA PESERTA</div>
+
+              <div class="col-12 mb-2">
+                <label 
+                  for="nim" 
+                  class="form-label fw-medium ps-1"
+                >
+                  No. Induk Mahasiswa (NIM) :
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  name="nim" 
+                  id="nim" 
+                  placeholder="no. induk mahasiswa..." 
+                  aria-describedby="nim nimValidation"
+                  required >
+                  <!-- <div id="nimValidation" class="invalid-feedback">
+                    Data tidak valid
+                  </div> -->
+              </div>
+
+              <div class="col-12 mb-2">
+                <label 
+                  for="nik" 
+                  class="form-label fw-medium ps-1"
+                >
+                  No. Induk Kependudukan (NIK) :
+                </label>
+                <input
+                  type="text"
+                  class="form-control" 
+                  name="nik" id="nik"
+                  pattern="[0-9]{16}"
+                  placeholder="no. induk kependudukan..."
+                  aria-describedby="nik nikValidation"
+                  required >
+                  <!-- <div id="nikValidation" class="invalid-feedback">
+                    Data tidak valid
+                  </div> -->
+              </div>
+
+              <div class="col-12 mb-2">
+                <label 
+                  for="name" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Nama Lengkap :
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  name="name" id="name" 
+                  placeholder="nama lengkap..." 
+                  required >
+              </div>
+              
+              <div class="col-12 mb-2">
+                <label 
+                  for="major" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Program Studi :
+                </label>
+                <select id="major" name="major" class="form-select" required>
+                  <option>--pilih program studi--</option>
+                  <option value="si">Sistem Infomasi</option>
+                  <option value="ti">Teknik Informatika</option>
+                </select>
+              </div>
+
+              <div class="col-12 mb-2">
+                <label 
+                  for="schema" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Sertifikasi yang diambil :
+                </label>
+                <select id="schema" name="schema" class="form-select" required>
+                  <option selected>--pilih skema sertifikasi--</option>
+                  <option value="lp">Lead Programming</option>
+                  <option value="nd">Network Design</option>
+                </select>
+              </div>
+
+              <hr class="m-0 mt-4" >
+              <div class="mb-3 m-0 pt-1 fw-medium text-primary" style="font-size: 14px;">DATA PRIBADI</div>
+              
+              <div class="col-12 mb-2 col-md-8">
+                <label 
+                  for="birthplace" 
+                  class="form-label fw-medium ps-1"
+                >
+                Tempat Lahir :
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  name="birthplace" 
+                  id="birthplace" 
+                  placeholder="tempat lahir..." 
+                  required >
+              </div>
+              <div class="col-12 mb-2 col-md-4">
+                <label 
+                  for="date_of_birth" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Tanggal Lahir :
+                </label>
+                <input 
+                  type="date" 
+                  class="form-control" 
+                  name="date_of_birth" 
+                  id="date_of_birth" 
+                  placeholder="nama lengkap..." 
+                  required >
+              </div>
+              <div class="col-12 mb-2">
+                <label 
+                  class="form-label fw-medium ps-1"
+                >
+                  Jenis Kelamin :
+                </label>
+                <div class="col-12">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="gender"
+                      id="perempuan"
+                      value="P"
+                      checked>
+                    <label
+                      class="form-check-label"
+                      for="perempuan">
+                      Perempuan
+                    </label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="gender"
+                      id="laki-laki"
+                      value="L">
+                    <label
+                      class="form-check-label"
+                      for="laki-laki">
+                      Laki-Laki
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 mb-2">
+                <label 
+                  for="nationality" 
+                  class="form-label fw-medium ps-1"
+                >
+                  kebangsaan :
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  name="nationality" 
+                  id="nationality" 
+                  placeholder="Indonesia..."
+                  value="Indonesia"
+                  required >
+              </div>
+
+              <div class="col-12 mb-2">
+                <label 
+                  for="address" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Alamat :
+                </label>
+                <textarea 
+                class="form-control" 
+                id="address"
+                placeholder="Jl..." 
+                name="address" 
+                rows="3" required></textarea>
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-md-4">
+                  <label for="zip_code" class="form-label fw-medium ps-1">Kode Pos :</label>
+                  <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="70714" required>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-5 mb-2">
+                <label 
+                  for="no_phone" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Nomor Telp/HP :
+                </label>
+                <div class="input-group">
+                  <span class="input-group-text" id="basic-addon3">+62</span>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    id="no_phone" 
+                    name="no_phone" 
+                    placeholder="8xxx..."
+                    aria-describedby="basic-addon3"
+                    required >
+                </div>
+              </div>
+              
+              <div class="col-12 col-md-7 mb-2">
+                <label 
+                  for="email" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Email :
+                </label>
+                
+                  <input 
+                    type="email" 
+                    class="form-control" 
+                    id="email" 
+                    name="email" 
+                    placeholder="example@gmail.com"
+                    required >
+              </div>
+              
+              <hr class="m-0 mt-4" >
+              <div class="mb-3 m-0 pt-1 fw-medium text-primary" style="font-size: 14px;">DATA PEKERJAAN</div>
+              
+              <div class="col-12 mb-2">
+                <label 
+                  for="current_job" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Pekerjaan Sekarang :
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  name="current_job" 
+                  id="current_job" 
+                  placeholder="isi pekerjaan saat ini..."
+                  value="-"
+                  required >
+                <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+              </div>
+              
+              <div class="col-12 mb-2">
+                <label 
+                  for="position" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Jabatan :
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  name="position" 
+                  id="position" 
+                  placeholder="isi jabatan..."
+                  value="-" 
+                  required >
+                <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+              </div>
+
+              <div class="col-12 mb-2">
+                <label 
+                  for="company_name" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Nama Kantor/Perusahaan :
+                </label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  name="company_name" 
+                  id="company_name" 
+                  placeholder="isi nama kantor saat ini..."
+                  value="-"
+                  required >
+                <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+              </div>
+
+              <div class="col-12 mb-2">
+                <label 
+                  for="company_address" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Alamat Kantor :
+                </label>
+                <textarea 
+                class="form-control" 
+                id="company_address"
+                placeholder="alamat kantor saat ini..." 
+                name="company_address"
+                rows="3" required>-</textarea>
+                <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+              </div>
+
+              <div class="col-12 col-md-5 mb-2">
+                <label 
+                  for="company_phone" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Nomor Telpon Kantor :
+                </label>
+                <div class="input-group">
+                  <!-- <span class="input-group-text" id="basic-addon3">+62</span> -->
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="company_phone" 
+                    name="company_phone"
+                    value="-"
+                    required >
+                  </div>
+                  <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+              </div>
+              
+              <div class="col-12 col-md-7 mb-2">
+                <label 
+                  for="company_email" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Email :
+                </label>
+                
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="company_email" 
+                    name="company_email"
+                    value="-"
+                    placeholder="example@gmail.com"
+                    required >
+                    <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+              </div>
+
+              <hr class="m-0 mt-4" >
+              <div class="mb-3 m-0 pt-1 fw-medium text-primary" style="font-size: 14px;">DATA ASSESMENT</div>
+
+              <div class="col-12 mb-2">
+                <label 
+                  for="purpose_asssesment" 
+                  class="form-label fw-medium ps-1"
+                >
+                  Tujuan Assesment:
+                </label>
+                <select id="purpose_asssesment" name="purpose_asssesment" class="form-select" required>
+                  <option>--tujuan assesment--</option>
+                  <option value="rpl">RPL</option>
+                  <option value="pencapaian pembelajaran">Pencapaian Pembelajaran</option>
+                  <option value="rcc">RCC</option>
+                  <option value="sertifikasi">Sertifikasi</option>
+                  <option value="lainnya">Lainnya</option>
+                </select>
+              </div>
+
+
+              <!-- <div class="col-12 mb-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck">
+                  <label class="form-check-label" for="gridCheck">
+                    Check me out
+                  </label>
+                </div>
+              </div> -->
+              <div class="col-12 mb-2 mt-5">
+                <button type="submit" class="btn btn-primary">Kirim Form</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+  </main>
+
+<%- include('../partials/js.ejs') %>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs') %>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+<%- include('../partials/navbar.ejs') %>
+<%- include('../partials/sidebar.ejs') %>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Data Pendaftaran Sertifikasi</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+              <li class="breadcrumb-item"><a href="/pengajuan">Pengajuan Sertifikasi</a></li>
+              <li class="breadcrumb-item active">Detail Daftar Sertifikasi</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Form Pendaftar Sertifikasi</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form class="form-horizontal">
+                <div class="card-body">
+                  <h6 class="font-weight-bold" style="color: blue">DATA PESERTA</h6>
+                  <div class="form-group row">
+                    <label for="no_daftar" class="col-sm-3 col-form-label">No. Daftar</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="no_daftar" value="<%= data.regisNum %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="nim" class="col-sm-3 col-form-label">No. Induk Mahasiswa (NIM)</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="nim" value="<%= data.applicant.nim %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="nik" class="col-sm-3 col-form-label">No. Induk Kependudukan (NIK)</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="nik" value="<%= data.applicant.nik %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="name" class="col-sm-3 col-form-label">Nama Lengkap</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="name" value="<%= data.applicant.name.toUpperCase() %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="prodi" class="col-sm-3 col-form-label">Program Studi</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly 
+                        class="form-control-plaintext" 
+                        id="prodi"
+                        <% if (data.applicant.major === 'si') { %>
+                          value="SISTEM INFORMASI"
+                        <% } else { %>
+                          value="TEKNIK INFORMATIKA"
+                        <% } %>
+                      >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="skema_sertifikasi" class="col-sm-3 col-form-label">Skema Sertifikasi</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly 
+                      class="form-control-plaintext" 
+                      id="skema_sertifikasi"
+                      <% if (data.applicant.schema === 'lp') { %>
+                        value="LEAD PROGRAMMING"
+                      <% } else { %>
+                        value="NETWORK DESIGN"
+                      <% } %>
+                      >
+                    </div>
+                  </div>
+                  <hr>
+                  <h6 class="font-weight-bold" style="color: blue">DATA PRIBADI</h6>
+                  <div class="form-group row">
+                    <label for="ttl" class="col-sm-3 col-form-label">Tempat Tanggal Lahir</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="ttl" value="<%= data.personal.birthplace.toUpperCase() %>, <%= dateFormat(data.personal.date_of_birth) %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="gender" class="col-sm-3 col-form-label">Jenis Kelamin</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly 
+                        class="form-control-plaintext" 
+                        id="gender"
+                        <% if (data.personal.gender === 'L') { %>
+                          value="LAKI-LAKI"
+                        <% } else { %>
+                          value="PEREMPUAN"
+                        <% } %>
+                      >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="kebangsaan" class="col-sm-3 col-form-label">Kebangsaan</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="kebangsaan" value="<%= data.personal.nationality.toUpperCase() %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="kebangsaan" value="<%= data.personal.address.toUpperCase() %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="contact" class="col-sm-3 col-form-label">Kontak </label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="contact" value="+62<%= data.personal.phone_num %>/<%= data.personal.email %>">
+                    </div>
+                  </div>
+                  <hr>
+                  <h6 class="font-weight-bold" style="color: blue">DATA PEKERJAAN</h6>
+                  <div class="form-group row">
+                    <label for="pekerjaan" class="col-sm-3 col-form-label">Pekerjaan Sekarang </label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="pekerjaan" value="<%= data.data_pekerjaan.current_job.toUpperCase() %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="jabatan" class="col-sm-3 col-form-label">Jabatan </label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="jabatan" value="<%= data.data_pekerjaan.position.toUpperCase() %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="nama_perusahaan" class="col-sm-3 col-form-label">Nama Kantor/Perusahaan</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="nama_perusahaan" value="<%= data.data_pekerjaan.company_name.toUpperCase() %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="alamat_kantor" class="col-sm-3 col-form-label">Alamat Kantor/Perusahaan</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="alamat_kantor" value="<%= data.data_pekerjaan.address.toUpperCase() %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="contact_company" class="col-sm-3 col-form-label">Kontak Kantor/Perusahaan</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="contact_company" value="<%= data.data_pekerjaan.contact.telp %>/<%= data.data_pekerjaan.contact.email %>">
+                    </div>
+                  </div>
+                  <hr>
+                  <h6 class="font-weight-bold" style="color: blue">DATA UJIAN</h6>
+                  <div class="form-group row">
+                    <label for="ttl_ujian" class="col-sm-3 col-form-label">Tanggal ujian</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly 
+                      class="form-control-plaintext" 
+                      id="ttl_ujian"
+                      <% if (data.assesment.date === 0) { %>
+                        value="TANGGAL BELUM TERKONFORMASI"
+                      <% } else { %>
+                        value="<%= dateFormat(data.assesment.date) %>"
+                      <% } %> 
+                      >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="tujuan_ujian" class="col-sm-3 col-form-label">Tujuan Ujian</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly class="form-control-plaintext" id="tujuan_ujian" value="<%= data.assesment.purpose.toUpperCase() %>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="hasil_ujian" class="col-sm-3 col-form-label">Hasil Ujian</label>
+                    <div class="col-sm-9">  
+                      <input type="text" readonly 
+                        class="form-control-plaintext" id="hasil_ujian"
+                        <% if (data.assesment.result === "TBC") { %>
+                          value="HASIL BELUM DIINPUT"
+                        <% } else if (data.assesment.result === "BK") { %>
+                          value="BELUM KOMPETEN"
+                        <% } else { %>
+                          value="KOMPETEN"
+                        <% } %>
+                        > 
+                    </div>
+                  </div>
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <!-- <button type="submit" class="btn btn-info">Sign in</button> -->
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default" data-whatever="<%= data._id %>">
+                    Input Data Ujian
+                  </button>
+                  <a href="/pengajuan" class="btn btn-default">Kembali</a>
+                </div>
+                <!-- /.card-footer -->
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Default Modal</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="/pengajuan/edit?_method=PUT" method="post">
+          <div class="modal-body">
+            <div class="card-body">
+              <div class="form-group">
+                <!-- <label for="id">Tujuan Ujian</label> -->
+                <input type="hidden" class="form-control" id="id" name="id">
+              </div>
+              <!-- <div class="form-group">
+                <label for="tujuan_ujian">Tujuan Ujian</label>
+                <input type="text" class="form-control" id="tujuan_ujian" value="Sertifikasi" readonly>
+              </div> -->
+              <div class="form-group">
+                <label for="tanggal">Tanggal Ujian</label>
+                <input type="date" class="form-control" id="tanggal" name="tanggal">
+              </div>
+              <div class="form-group">
+                <label for="result">Hasil Ujian</label>
+                <select class="form-control" id="result" name="result">
+                  <option value="K" selected>Kompeten</option>
+                  <option value="BK">Belum Kompeten</option>
+                </select>
+              </div>
+              
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <div class="modal-footer justify-content-end">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+  
+<%- include('../partials/footer.ejs') %>
+</div>
+<!-- ./wrapper -->
+<%- include('../partials/js.ejs') %>
+<script>
+  $('#modal-default').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('Tambah Data Ujian')
+  modal.find('.modal-body #id').val(recipient)
+})
+</script>
+</body>
+</html>

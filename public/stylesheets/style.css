@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@import 'navbar.css';
+@import 'hero.css';
+
+:root {
+  --primary-color-custom: rgba(247, 248, 253, 1);
+  --secondary-color-custom: rgba(10, 15, 38, 1);
+  --tertiary-color-custom: rgba(45, 72, 180, 1);
+  --accent-color-red: rgba(250, 103, 106, 1);
+}
+
+body {
+  /* background-color: var(--primary-color-custom); */
+  font-family: 'Poppins', sans-serif;
+}
+
+main section {
+  min-height: 35rem;
+}
+
+header h1 {
+  color: var(--secondary-color-custom);
+  /* font-size: 2.25rem; */
+  font-weight: 600;
+}
+
+header h5 {
+  color: var(--secondary-color-custom);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.4px;
+}
+
+.net-design img {
+  width: 280px;
+  height: 400px;
+  /* border-radius: 52px; */
+  /* border-top-right-radius: 52px;
+  border-bottom-left-radius: 52px; */
+}
+.lead-programming img {
+  width: 280px;
+  height: 400px;
+  /* border-radius: 52px; */
+  /* border-top-right-radius: 52px;
+  border-bottom-left-radius: 52px; */
+}
+
+.heading-section {
+  padding-top: 5.75rem;
+}
+
+.sub-headline {
+  color: var(--tertiary-color-custom);
+  font-weight: 600;
+  margin-block: 0;
+}
+
+.headline {
+  color: var(--secondary-color-custom);
+  letter-spacing: 1.2px;
+  /* font-weight: 600; */
+  margin-block: 0;
+}
+
+.body-header {
+  color: var(--secondary-color-custom);
+  opacity: .6;
+  padding-top: 1rem;
+  /* line-height: 26px; */
+  letter-spacing: 0.52px;
+}
+
+.accent {
+  background-color: var(--accent-color-red);
+}
+
+.pendaftaran header .accent {
+  width:  180px;
+  height: 16px;
+  left: 200;
+  bottom: 0;
+}
+
+.kompetensi header .accent {
+  width:  180px;
+  height: 12px;
+  left: 200;
+  bottom: 0;
+}
+
+.skema header .accent {
+  width:  150px;
+  height: 16px;
+  left: 200;
+  bottom: 0;
+}
+.form header .accent {
+  width:  128px;
+  height: 16px;
+  left: 200;
+  bottom: 0;
+}
+
+.header-title div .accent {
+  position: absolute;
+  width:  161px;
+  height: 16px;
+  left: 50;
+  right: 0;
+  bottom: 0;
+}
+
+.header-title span.pendaftaran-accent {
+  /* position: absolute; */
+  min-width: 280px;
+  height: 16px;
+}
+
+.card {
+  background: var(--primary-color-custom);
+  border: 0px;
+  border-radius: 20px;
+  max-width: 18rem;
+}
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: 1px 2px 20px #FED1D2;
+  transform: scale(1.1);
+  transition:ease-out .5s;
+  border-radius: 24px;
+}
+
+.card .card-body .illustration {
+  width: 70px;
+  height: 70px;
+  border-radius: 100px;
+  border: solid 2.1px rgb(204, 213, 248);
+}
+
+.card .card-body .illustration svg {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  background-color: rgba(222, 227, 247, 1);
+  padding: 12px;
+}
+
+.card-title {
+  color: var(--secondary-color-custom);
+}
+
+/* .btn {
+  background-color: var(--tertiary-color-custom);
+  color: var(--primary-color-custom);
+  font-weight: 500;
+  letter-spacing: 0.4px;
+} */
+
+.pertanyaan {
+  background-color: rgba(222, 227, 247, 1);
+  box-shadow: 2px 2px 2px rgba(10, 15, 38, .3);
+}
+
+.jawaban {
+  background-color: rgba(222, 227, 247, 1);
+  box-shadow: 2px 2px 2px rgba(10, 15, 38, .3);
+}
+
+.pertanyaan:hover {
+  background-color: rgba(222, 227, 247, .5);
+  transform: scale(1.03);
+  transition: ease .5s;
+}
+
+
+
+/* #detail-pertanyaan section#pertanyaan {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+} */
+.group {
+  background-color:rgba(239, 241, 251, 1);
+  /* width: 52vw; */
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+#pertanyaan .group header {
+  display: flex;
+  align-items: flex-start;
+  background-color: rgba(222, 227, 247, 1);
+  padding-top: 24px;
+  padding-bottom: 16px;
+  padding-inline: 14px;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+#pertanyaan .group header p {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.group #body-pertanyaan {
+  font-size: 16px;
+  padding-inline: 14px;
+  padding-top: 12px;
+  padding-bottom: 24px;
+}
+
+.group #meta-data {
+  padding-block: 12px;
+  padding-inline: 12px;
+  background-color: rgba(222, 227, 247, 1);
+  display: flex;
+  gap: 24px;
+}
+
+.jawaban #meta-data {
+  /* padding-block: 12px; */
+  /* padding-inline: 12px; */
+  background-color: rgba(222, 227, 247, 1);
+  display: flex;
+  gap: 24px;
+}
+
+.jawaban #meta-data div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.jawaban #meta-data span {
+  font-size: 14px;
+  color: rgba(10, 15, 38, .7);
+}
+
+.group #meta-data div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.group #meta-data span {
+  font-size: 14px;
+  color: rgba(10, 15, 38, .7);
+}
+
+
+
+@media only screen and (max-width: 991.98px) {
+  .header-title div .accent {
+    position: absolute;
+    width:  190px;
+    height: 16px;
+    /* margin-right: 15.5rem; */
+  }
+}
