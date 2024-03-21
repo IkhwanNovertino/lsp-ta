@@ -11,4 +11,8 @@ const dateForm = value => {
   return tgl
 }
 
-module.exports = { dateFormat, dateForm }
+const dateDisplay = (value) => {
+  const tgl = moment(value).locale('id').format('LL');
+  return tgl;
+}
+module.exports = { dateFormat, dateForm, dateDisplay }

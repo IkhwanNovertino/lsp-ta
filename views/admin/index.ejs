@@ -33,13 +33,13 @@
             <!-- small box -->
             <div class="small-box bg-primary">
               <div class="inner">
-                <h3>44</h3>
-                <p>User Registrations</p>
+                <h3><%= dataCount %></h3>
+                <p>Total pendaftar</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
           <!-- ./col -->
@@ -105,12 +105,12 @@
                       <% data.forEach(e => { %>
                         <tr>
                           <td><%= e.regisNum %></td>
-                          <td><%= e.applicant.name.toUpperCase() %></td>
-                          <td><%= e.applicant.nim %></td>
+                          <td><%= e.name.toUpperCase() %></td>
+                          <td><%= e.nim %></td>
                           <td>
-                            <% if (e.assesment.result === "TBC") { %>
+                            <% if (e.assesment_result === "TBC") { %>
                               <span class="badge badge-info">Belum Ujian</span>
-                            <% } else if (e.assesment.result === "BK") { %>
+                            <% } else if (e.assesment_result === "BK") { %>
                               <span class="badge badge-warning">Belum Kompeten</span>
                             <% } else { %>
                               <span class="badge badge-success">Kompeten</span>

@@ -76,102 +76,50 @@
                   </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>202620701</td>
-                      <td>MUHAMMAD IKHWAN</td>
-                      <td>310118012620</td>
-                      <td>6371032101010003</td>
-                      <td>SI</td>
-                      <td>LEAD PROGRAMMING</td>
-                      <td>11 MARET 2024</td>
-                      <td>KOMPETEN</td>
-                      <td>SERTIFIKASI</td>
-                      <td>BANJARBARU, 21 JANUARI 2001</td>
-                      <td>LAKI-LAKI</td>
-                      <td>INDONESIA</td>
-                      <td>JL. CEMPAKA SARI III JALUE 2 NO.22</td>
-                      <td>70714</td>
-                      <td>+6282250001001</td>
-                      <td>ikhwan@gmail.com</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                    </tr>
-                    <tr>
-                      <td>202620701</td>
-                      <td>MUHAMMAD IKHWAN</td>
-                      <td>310118012620</td>
-                      <td>6371032101010003</td>
-                      <td>SI</td>
-                      <td>LEAD PROGRAMMING</td>
-                      <td>11 MARET 2024</td>
-                      <td>KOMPETEN</td>
-                      <td>SERTIFIKASI</td>
-                      <td>BANJARBARU, 21 JANUARI 2001</td>
-                      <td>LAKI-LAKI</td>
-                      <td>INDONESIA</td>
-                      <td>JL. CEMPAKA SARI III JALUE 2 NO.22</td>
-                      <td>70714</td>
-                      <td>+6282250001001</td>
-                      <td>ikhwan@gmail.com</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                    </tr>
-                    <tr>
-                      <td>202620701</td>
-                      <td>MUHAMMAD IKHWAN</td>
-                      <td>310118012620</td>
-                      <td>6371032101010003</td>
-                      <td>SI</td>
-                      <td>LEAD PROGRAMMING</td>
-                      <td>9 MARET 2024</td>
-                      <td>KOMPETEN</td>
-                      <td>SERTIFIKASI</td>
-                      <td>BANJARBARU, 21 JANUARI 2001</td>
-                      <td>LAKI-LAKI</td>
-                      <td>INDONESIA</td>
-                      <td>JL. CEMPAKA SARI III JALUE 2 NO.22</td>
-                      <td>70714</td>
-                      <td>+6282250001001</td>
-                      <td>ikhwan@gmail.com</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                    </tr>
-                    <tr>
-                      <td>202620701</td>
-                      <td>MUHAMMAD IKHWAN</td>
-                      <td>310118012620</td>
-                      <td>6371032101010003</td>
-                      <td>SI</td>
-                      <td>LEAD PROGRAMMING</td>
-                      <td>9 MARET 2024</td>
-                      <td>KOMPETEN</td>
-                      <td>SERTIFIKASI</td>
-                      <td>BANJARBARU, 21 JANUARI 2001</td>
-                      <td>LAKI-LAKI</td>
-                      <td>INDONESIA</td>
-                      <td>JL. CEMPAKA SARI III JALUE 2 NO.22</td>
-                      <td>70714</td>
-                      <td>+6282250001001</td>
-                      <td>ikhwan@gmail.com</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                      <td>-</td>
-                    </tr>
+                    <% data.forEach(element => { %>
+                      <tr>
+                        <td><%= element.regisNum %></td>
+                        <td><%= element.name.toUpperCase() %></td>
+                        <td><%= element.nim %></td>
+                        <td><%= element.nik %></td>
+                        <td><%= element.major.toUpperCase() %></td>
+                        <td>
+                          <% if (element.schema === 'lp') { %>
+                            LEAD PROGRAMMING
+                          <% } else { %>
+                            NETWORK DESIGN
+                          <% } %>
+                        </td>
+                        <td><%= dateDisplay(element.assesment_date) %></td>
+                        <td>
+                          <% if (element.assesment_result === 'K') { %>
+                            KOMPETEN
+                          <% } else if (element.assesment_result === 'BK') { %>
+                            BELUM KOMPETEN
+                          <% } else { %>
+                            BELUM DIKONFORMASI
+                          <% } %>
+                        </td>
+                        <td>
+                          <%= element.assesment_type.toUpperCase() %>
+                        </td>
+                        <td><%= element.birthplace.toUpperCase() %>, <%= dateDisplay(element.date_of_birth) %></td>
+                        <td>
+                          <%= element.gender === 'L' ? 'LAKI-LAKI' : 'PEREMPUAN' %>
+                        </td>
+                        <td><%= element.nationality.toUpperCase() %></td>
+                        <td><%= element.address.toUpperCase() %></td>
+                        <td><%= element.zip_code %></td>
+                        <td><%= `+62${element.phone_num}` %></td>
+                        <td><%= element.email %></td>
+                        <td><%= element.current_job %></td>
+                        <td><%= element.position %></td>
+                        <td><%= element.company_name %></td>
+                        <td><%= element.company_address %></td>
+                        <td><%= element.company_telp %></td>
+                        <td><%= element.company_email %></td>
+                      </tr>
+                    <% }) %>
                   </tbody>
                   
                 </table>

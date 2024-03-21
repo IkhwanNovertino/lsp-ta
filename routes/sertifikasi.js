@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const Daftar = require('../modal/daftar');
+const Registrations = require('../modal/daftar');
+const { dateDisplay } = require('../utils');
 
 router.get('/', function (req, res, next) {
   res.render('sertifikasi/view_sertifikasi', {
@@ -93,12 +94,19 @@ router.get('/programming', function (req, res, next) {
 });
 
 router.get('/assesment', function (req, res) {
+  const data = req.flash('data');
+  const error = req.flash('error');
+
+  console.log(error);
+
   res.render('sertifikasi/assesment', {
     title: 'LSP-STMIK BANJARBARU',
-    data: req.session.assesment,
+    data,
+    error,
+    dateDisplay,
     sessions: req.session.user,
   });
-  
+
 })
 
 router.get('/search', async function (req, res) {
@@ -106,32 +114,24 @@ router.get('/search', async function (req, res) {
     const { nim } = req.query;
     // console.log(req);
 
-    const findData = await Daftar.findOne({ 'applicant.nim': nim })
+    const findData = await Registrations.findOne({ nim: nim })
 
-    if (!findData) {
+    if (!findData) throw new Error('Data Kosong');
 
-      throw new Error('Data Kosong');
-    }
-
-    const data = {
-
-    }
-
-    req.session.assesment = {
+    req.flash('data', {
       regisNum: findData.regisNum,
-      nim: findData.applicant.nim,
-      name: findData.applicant.name,
-      date_of_assesment: findData.assesment.date,
-      result_of_assesment: findData.assesment.result
-    }
+      nim: findData.nim,
+      name: findData.name,
+      date_of_assesment: findData.assesment_date,
+      result_of_assesment: findData.assesment_result,
+    })
 
     req.search = req.query = '';
     res.redirect('/sertifikasi/assesment');
-
-
-  } catch (error) {
-    console.log(error);
-    res.redirect('/sertifikasi/assesment')
+  } catch (err) {
+    console.log(err);
+    req.flash('error', err);
+    res.redirect('back')
   }
 })
 

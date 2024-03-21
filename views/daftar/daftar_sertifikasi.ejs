@@ -20,9 +20,21 @@
       <div class="container-md">
         <div class="row d-flex justify-content-center p-1 pt-md-3">
           <div class="col-12 col-lg-8 mb-4 bg-body-tertiary rounded-5 shadow">
-            <form class="row g-3 p-2 p-lg-5" action="/daftar/create" method="post" autocomplete="off">
-              <div class="mb-3 m-0 pt-1 fw-medium text-primary" style="font-size: 14px;">DATA PESERTA</div>
+            <!-- <div>
+              <%# if (alertValidation != '') { %>
+                <%# alertValidation.forEach(element => { %>
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%#= element %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                <%# }) %>
+              <%# } else { %>
+                <div></div>
+              <%# } %>
+            </div> -->
+            <form class="row g-3 p-2 p-lg-5" id="forms" action="/daftar/create" method="post" autocomplete="on">
 
+              <div class="mb-3 m-0 pt-1 fw-medium text-primary" style="font-size: 14px;">DATA PESERTA</div>
               <div class="col-12 mb-2">
                 <label 
                   for="nim" 
@@ -35,18 +47,19 @@
                   class="form-control" 
                   name="nim" 
                   id="nim" 
+                  pattern="[0-9]{12}" title="nim tidak valid"
                   placeholder="no. induk mahasiswa..." 
                   aria-describedby="nim nimValidation"
                   required >
-                  <!-- <div id="nimValidation" class="invalid-feedback">
-                    Data tidak valid
+                  <!-- <div class="invalid-feedback">
+                    nim harus diisi
                   </div> -->
               </div>
 
               <div class="col-12 mb-2">
                 <label 
                   for="nik" 
-                  class="form-label fw-medium ps-1"
+                  class="form-label fw-medium ps-1 is-invalid"
                 >
                   No. Induk Kependudukan (NIK) :
                 </label>
@@ -54,12 +67,12 @@
                   type="text"
                   class="form-control" 
                   name="nik" id="nik"
-                  pattern="[0-9]{16}"
+                  pattern="[0-9]{16}" title="nik tidak valid"
                   placeholder="no. induk kependudukan..."
                   aria-describedby="nik nikValidation"
                   required >
                   <!-- <div id="nikValidation" class="invalid-feedback">
-                    Data tidak valid
+                    nik harus diisi
                   </div> -->
               </div>
 
@@ -76,6 +89,9 @@
                   name="name" id="name" 
                   placeholder="nama lengkap..." 
                   required >
+                  <!-- <div class="invalid-feedback">
+                    nama harus diisi.
+                  </div> -->
               </div>
               
               <div class="col-12 mb-2">
@@ -86,10 +102,13 @@
                   Program Studi :
                 </label>
                 <select id="major" name="major" class="form-select" required>
-                  <option>--pilih program studi--</option>
+                  <option value="">--pilih program studi--</option>
                   <option value="si">Sistem Infomasi</option>
                   <option value="ti">Teknik Informatika</option>
                 </select>
+                <!-- <div class="invalid-feedback">
+                  pilih program studi
+                </div> -->
               </div>
 
               <div class="col-12 mb-2">
@@ -100,10 +119,13 @@
                   Sertifikasi yang diambil :
                 </label>
                 <select id="schema" name="schema" class="form-select" required>
-                  <option selected>--pilih skema sertifikasi--</option>
+                  <option value="">--pilih skema sertifikasi--</option>
                   <option value="lp">Lead Programming</option>
                   <option value="nd">Network Design</option>
                 </select>
+                <!-- <div class="invalid-feedback">
+                  pilih skema sertifikasi
+                </div> -->
               </div>
 
               <hr class="m-0 mt-4" >
@@ -121,8 +143,12 @@
                   class="form-control" 
                   name="birthplace" 
                   id="birthplace" 
+                  pattern="[A-Za-z]{1,}"
                   placeholder="tempat lahir..." 
                   required >
+                  <!-- <div class="invalid-feedback">
+                    tempat lahir harus diisi
+                  </div> -->
               </div>
               <div class="col-12 mb-2 col-md-4">
                 <label 
@@ -135,9 +161,12 @@
                   type="date" 
                   class="form-control" 
                   name="date_of_birth" 
-                  id="date_of_birth" 
-                  placeholder="nama lengkap..." 
+                  id="date_of_birth"
+                  max="" 
                   required >
+                  <!-- <div class="invalid-feedback">
+                    tanggal lahir harus diisi
+                  </div> -->
               </div>
               <div class="col-12 mb-2">
                 <label 
@@ -188,10 +217,14 @@
                   type="text" 
                   class="form-control" 
                   name="nationality" 
-                  id="nationality" 
+                  id="nationality"
+                  pattern="[A-Za-z]{3,}"
                   placeholder="Indonesia..."
                   value="Indonesia"
                   required >
+                  <!-- <div class="invalid-feedback">
+                    kebangsaan harus diisi
+                  </div> -->
               </div>
 
               <div class="col-12 mb-2">
@@ -207,12 +240,18 @@
                 placeholder="Jl..." 
                 name="address" 
                 rows="3" required></textarea>
+                <!-- <div class="invalid-feedback">
+                  alamat harus diisi
+                </div> -->
               </div>
 
               <div class="row mt-2">
                 <div class="col-md-4">
                   <label for="zip_code" class="form-label fw-medium ps-1">Kode Pos :</label>
                   <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="70714" required>
+                  <!-- <div class="invalid-feedback">
+                    kode pos harus diisi
+                  </div> -->
                 </div>
               </div>
 
@@ -226,13 +265,17 @@
                 <div class="input-group">
                   <span class="input-group-text" id="basic-addon3">+62</span>
                   <input 
-                    type="number" 
+                    type="text" 
                     class="form-control" 
                     id="no_phone" 
-                    name="no_phone" 
+                    name="no_phone"
+                    pattern="[0-9]{11,13}"
                     placeholder="8xxx..."
                     aria-describedby="basic-addon3"
                     required >
+                    <!-- <div class="invalid-feedback">
+                      no. telpon harus diisi
+                    </div> -->
                 </div>
               </div>
               
@@ -251,6 +294,9 @@
                     name="email" 
                     placeholder="example@gmail.com"
                     required >
+                    <!-- <div class="invalid-feedback">
+                      email harus diisi
+                    </div> -->
               </div>
               
               <hr class="m-0 mt-4" >
@@ -272,6 +318,9 @@
                   value="-"
                   required >
                 <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+                <!-- <div class="invalid-feedback">
+                  pekerjaan harus diisi
+                </div> -->
               </div>
               
               <div class="col-12 mb-2">
@@ -290,6 +339,9 @@
                   value="-" 
                   required >
                 <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+                <!-- <div class="invalid-feedback">
+                  jabatan harus diisi
+                </div> -->
               </div>
 
               <div class="col-12 mb-2">
@@ -308,6 +360,9 @@
                   value="-"
                   required >
                 <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+                <!-- <div class="invalid-feedback">
+                  nama kantor harus diisi
+                </div> -->
               </div>
 
               <div class="col-12 mb-2">
@@ -324,6 +379,9 @@
                 name="company_address"
                 rows="3" required>-</textarea>
                 <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+                <!-- <div class="invalid-feedback">
+                  alamat kantor harus diisi
+                </div> -->
               </div>
 
               <div class="col-12 col-md-5 mb-2">
@@ -333,7 +391,6 @@
                 >
                   Nomor Telpon Kantor :
                 </label>
-                <div class="input-group">
                   <!-- <span class="input-group-text" id="basic-addon3">+62</span> -->
                   <input 
                     type="text" 
@@ -342,8 +399,10 @@
                     name="company_phone"
                     value="-"
                     required >
-                  </div>
                   <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+                  <!-- <div class="invalid-feedback">
+                    no. telpon kantor harus diisi
+                  </div> -->
               </div>
               
               <div class="col-12 col-md-7 mb-2">
@@ -351,18 +410,21 @@
                   for="company_email" 
                   class="form-label fw-medium ps-1"
                 >
-                  Email :
+                  Email Kantor :
                 </label>
                 
-                  <input 
-                    type="text" 
-                    class="form-control" 
-                    id="company_email" 
-                    name="company_email"
-                    value="-"
-                    placeholder="example@gmail.com"
-                    required >
-                    <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="company_email" 
+                  name="company_email"
+                  value="-"
+                  placeholder="example@gmail.com"
+                  required >
+                  <div class="form-text fw-lighter ps-2">Jika tidak ada gunakan "-".</div>
+                  <!-- <div class="invalid-feedback">
+                    email kantor harus diisi
+                  </div> -->
               </div>
 
               <hr class="m-0 mt-4" >
@@ -376,24 +438,18 @@
                   Tujuan Assesment:
                 </label>
                 <select id="purpose_asssesment" name="purpose_asssesment" class="form-select" required>
-                  <option>--tujuan assesment--</option>
+                  <option value="">--tujuan assesment--</option>
                   <option value="rpl">RPL</option>
                   <option value="pencapaian pembelajaran">Pencapaian Pembelajaran</option>
                   <option value="rcc">RCC</option>
                   <option value="sertifikasi">Sertifikasi</option>
                   <option value="lainnya">Lainnya</option>
                 </select>
+                <!-- <div class="invalid-feedback">
+                  pilih tujuan assesment
+                </div> -->
               </div>
 
-
-              <!-- <div class="col-12 mb-2">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="gridCheck">
-                  <label class="form-check-label" for="gridCheck">
-                    Check me out
-                  </label>
-                </div>
-              </div> -->
               <div class="col-12 mb-2 mt-5">
                 <button type="submit" class="btn btn-primary">Kirim Form</button>
               </div>
@@ -404,8 +460,35 @@
       
     </section>
 
+      <% if (alertValidation != '') { %>
+        <div class="toast-container position-fixed top-0 end-0 p-3">
+          <% alertValidation.forEach(e => { %>
+            <div class="toast text-bg-danger border-0" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <strong class="me-auto">Invalid Input</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                <%= e %>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
   </main>
 
+
 <%- include('../partials/js.ejs') %>
+<script>
+  
+
+  document.addEventListener("DOMContentLoaded", function(){
+    let element = document.getElementsByClassName("toast");
+
+    for (let i = 0; i < element.length; i++) {
+      new bootstrap.Toast(element[i]).show();   
+    }
+  });
+</script>
 </body>
 </html>

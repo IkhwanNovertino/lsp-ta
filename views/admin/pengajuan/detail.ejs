@@ -50,19 +50,19 @@
                   <div class="form-group row">
                     <label for="nim" class="col-sm-3 col-form-label">No. Induk Mahasiswa (NIM)</label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="nim" value="<%= data.applicant.nim %>">
+                      <input type="text" readonly class="form-control-plaintext" id="nim" value="<%= data.nim %>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="nik" class="col-sm-3 col-form-label">No. Induk Kependudukan (NIK)</label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="nik" value="<%= data.applicant.nik %>">
+                      <input type="text" readonly class="form-control-plaintext" id="nik" value="<%= data.nik %>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="name" class="col-sm-3 col-form-label">Nama Lengkap</label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="name" value="<%= data.applicant.name.toUpperCase() %>">
+                      <input type="text" readonly class="form-control-plaintext" id="name" value="<%= data.name.toUpperCase() %>">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -71,7 +71,7 @@
                       <input type="text" readonly 
                         class="form-control-plaintext" 
                         id="prodi"
-                        <% if (data.applicant.major === 'si') { %>
+                        <% if (data.major === 'si') { %>
                           value="SISTEM INFORMASI"
                         <% } else { %>
                           value="TEKNIK INFORMATIKA"
@@ -85,7 +85,7 @@
                       <input type="text" readonly 
                       class="form-control-plaintext" 
                       id="skema_sertifikasi"
-                      <% if (data.applicant.schema === 'lp') { %>
+                      <% if (data.schema === 'lp') { %>
                         value="LEAD PROGRAMMING"
                       <% } else { %>
                         value="NETWORK DESIGN"
@@ -98,7 +98,7 @@
                   <div class="form-group row">
                     <label for="ttl" class="col-sm-3 col-form-label">Tempat Tanggal Lahir</label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="ttl" value="<%= data.personal.birthplace.toUpperCase() %>, <%= dateFormat(data.personal.date_of_birth) %>">
+                      <input type="text" readonly class="form-control-plaintext" id="ttl" value="<%= data.birthplace.toUpperCase() %>, <%= dateDisplay(data.date_of_birth).toUpperCase() %>">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -107,7 +107,7 @@
                       <input type="text" readonly 
                         class="form-control-plaintext" 
                         id="gender"
-                        <% if (data.personal.gender === 'L') { %>
+                        <% if (data.gender === 'L') { %>
                           value="LAKI-LAKI"
                         <% } else { %>
                           value="PEREMPUAN"
@@ -118,19 +118,19 @@
                   <div class="form-group row">
                     <label for="kebangsaan" class="col-sm-3 col-form-label">Kebangsaan</label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="kebangsaan" value="<%= data.personal.nationality.toUpperCase() %>">
+                      <input type="text" readonly class="form-control-plaintext" id="kebangsaan" value="<%= data.nationality.toUpperCase() %>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="kebangsaan" value="<%= data.personal.address.toUpperCase() %>">
+                      <input type="text" readonly class="form-control-plaintext" id="kebangsaan" value="<%= data.address.toUpperCase() %>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="contact" class="col-sm-3 col-form-label">Kontak </label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="contact" value="+62<%= data.personal.phone_num %>/<%= data.personal.email %>">
+                      <input type="text" readonly class="form-control-plaintext" id="contact" value="+62<%= data.phone_num %>/<%= data.email %>">
                     </div>
                   </div>
                   <hr>
@@ -138,31 +138,31 @@
                   <div class="form-group row">
                     <label for="pekerjaan" class="col-sm-3 col-form-label">Pekerjaan Sekarang </label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="pekerjaan" value="<%= data.data_pekerjaan.current_job.toUpperCase() %>">
+                      <input type="text" readonly class="form-control-plaintext" id="pekerjaan" value="<%= data.current_job.toUpperCase() %>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="jabatan" class="col-sm-3 col-form-label">Jabatan </label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="jabatan" value="<%= data.data_pekerjaan.position.toUpperCase() %>">
+                      <input type="text" readonly class="form-control-plaintext" id="jabatan" value="<%= data.position.toUpperCase() %>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="nama_perusahaan" class="col-sm-3 col-form-label">Nama Kantor/Perusahaan</label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="nama_perusahaan" value="<%= data.data_pekerjaan.company_name.toUpperCase() %>">
+                      <input type="text" readonly class="form-control-plaintext" id="nama_perusahaan" value="<%= data.company_name.toUpperCase() %>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="alamat_kantor" class="col-sm-3 col-form-label">Alamat Kantor/Perusahaan</label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="alamat_kantor" value="<%= data.data_pekerjaan.address.toUpperCase() %>">
+                      <input type="text" readonly class="form-control-plaintext" id="alamat_kantor" value="<%= data.company_address.toUpperCase() %>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="contact_company" class="col-sm-3 col-form-label">Kontak Kantor/Perusahaan</label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="contact_company" value="<%= data.data_pekerjaan.contact.telp %>/<%= data.data_pekerjaan.contact.email %>">
+                      <input type="text" readonly class="form-control-plaintext" id="contact_company" value="<%= data.company_telp %>/<%= data.company_email %>">
                     </div>
                   </div>
                   <hr>
@@ -173,18 +173,14 @@
                       <input type="text" readonly 
                       class="form-control-plaintext" 
                       id="ttl_ujian"
-                      <% if (data.assesment.date === 0) { %>
-                        value="TANGGAL BELUM TERKONFORMASI"
-                      <% } else { %>
-                        value="<%= dateFormat(data.assesment.date) %>"
-                      <% } %> 
+                      value="<%= data.assesment_date != 0 ? dateDisplay(data.assesment_date) :'BELUM DIKONFORMASI' %>"
                       >
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="tujuan_ujian" class="col-sm-3 col-form-label">Tujuan Ujian</label>
                     <div class="col-sm-9">  
-                      <input type="text" readonly class="form-control-plaintext" id="tujuan_ujian" value="<%= data.assesment.purpose.toUpperCase() %>">
+                      <input type="text" readonly class="form-control-plaintext" id="tujuan_ujian" value="<%= data.assesment_type.toUpperCase() %>">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -192,9 +188,9 @@
                     <div class="col-sm-9">  
                       <input type="text" readonly 
                         class="form-control-plaintext" id="hasil_ujian"
-                        <% if (data.assesment.result === "TBC") { %>
-                          value="HASIL BELUM DIINPUT"
-                        <% } else if (data.assesment.result === "BK") { %>
+                        <% if (data.assesment_result === "TBC") { %>
+                          value="HASIL BELUM DIKONFORMASI"
+                        <% } else if (data.assesment_result === "BK") { %>
                           value="BELUM KOMPETEN"
                         <% } else { %>
                           value="KOMPETEN"
@@ -237,7 +233,7 @@
           <div class="modal-body">
             <div class="card-body">
               <div class="form-group">
-                <!-- <label for="id">Tujuan Ujian</label> -->
+                <!-- <label for="id">ID PESERTA</label> -->
                 <input type="hidden" class="form-control" id="id" name="id">
               </div>
               <!-- <div class="form-group">
